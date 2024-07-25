@@ -1,0 +1,35 @@
+services:
+    nginx:
+        image: nginx:latest
+        ports:
+            - "8000:80"
+        volumes:
+            - ../app:/var/www/html:ro
+            - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+        depends_on:
+            - php
+            - db
+
+    php:
+        build:
+            context: ../app
+            dockerfile: ../infra/php/Dockerfile
+        volumes:
+            - ../app:/var/www/html
+        environment:
+            DATABASE_URL: postgres://postgres:password@db:5432/my_database
+
+    db:
+        image: postgres:13
+        environment:
+            POSTGRES_PASSWORD: password
+            POSTGRES_DB: my_database
+
+    gatling:
+        image: denvazh/gatling
+        platform: linux/amd64
+        volumes:
+            - ../gatling:/opt/gatling/user-files
+        entrypoint: [ "/opt/gatling/bin/gatling.sh", "-s", "simulations.TransferSimulation" ]
+        depends_on:
+            - nginx
