@@ -1,7 +1,8 @@
-ShotsDoctrine
+<h2> ShotsDoctrine </h2>
 
 This application is a Symfony-based project that demonstrates the use of Doctrine ORM for managing transactions and locks in a banking system. It includes features for transferring funds between accounts while ensuring data consistency and handling concurrency issues.
-Key Features
+
+<h3> Key Features </h3>
 
  - Account Management: Create, read, and manage bank accounts with balances.
  - Fund Transfer: Transfer funds between accounts with various locking mechanisms to ensure data consistency.
@@ -13,7 +14,7 @@ Key Features
  - Concurrency Handling: Demonstrates handling concurrent transactions using different locking strategies.
  - Gatling Integration: Performance testing with Gatling to simulate concurrent requests and analyze system behavior under load.
 
-Technology Stack
+<h3> Technology Stack </h3>
 
  - Backend: PHP with Symfony framework.
  - Database: PostgreSQL with Doctrine ORM for data management.

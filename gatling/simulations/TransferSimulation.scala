@@ -13,10 +13,10 @@ class TransferSimulation extends Simulation {
   val scn = scenario("Transfer Scenario")
     .exec(
       http("Transfer Request")
-        //.get("/transfer/without_lock/1/2/1")
+        .get("/transfer/without_lock/1/2/1")
         //.get("/transfer/pessimistic_wait/1/2/1")
         //.get("/transfer/pessimistic_error/1/2/1")
-        .get("/transfer/optimistic/1/2/1")
+        //.get("/transfer/optimistic/1/2/1")
         .check(status.in(200,500))
     )
 
